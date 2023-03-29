@@ -1,0 +1,48 @@
+local options = {
+  autoindent = true,
+  backup = false,
+  breakindent = true,
+  clipboard = "",
+  cmdheight = 1,
+  conceallevel = 0,
+  cursorline = true,
+  expandtab = true,
+  hlsearch = false,
+  ignorecase = true,
+  incsearch = true,
+  laststatus = 2,
+  mouse = "a",
+  number = true,
+  numberwidth = 4,
+  pumheight = 10,
+  relativenumber = false,
+  scrolloff = 8,
+  shell = "zsh",
+  shiftwidth = 2,
+  showcmd = false,
+  showmode = false,
+  sidescrolloff = 8,
+  signcolumn = "yes",
+  smartcase = true,
+  smartindent = true,
+  smarttab = true,
+  softtabstop = 2,
+  splitbelow = true,
+  splitright = true,
+  swapfile = false,
+  tabstop = 2,
+  termguicolors = true,
+  timeoutlen = 500,
+  title = true,
+  ttimeoutlen = 10,
+  updatetime = 50,
+  whichwrap = "b,s,<,>,[,]",
+  wrap = false,
+  wrapscan = true,
+}
+
+vim.opt.shortmess:append("c")
+
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
