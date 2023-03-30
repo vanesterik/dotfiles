@@ -23,7 +23,10 @@ plug "hlissner/zsh-autopair"
 plug "koendirkvanesterik/zsh-git"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
-# Initiate substring search and bind required keys
 plug "zsh-users/zsh-history-substring-search"
+
+# Settings for zsh history substring plugin
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=false
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=false
