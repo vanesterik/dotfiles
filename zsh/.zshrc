@@ -16,11 +16,14 @@ eval "$(starship init zsh)"
 # Set fnm environment (node version manager)
 eval "$(fnm env --use-on-cd)"
 
-# Initiate zsh Plugins
+# Initiate zsh plugins
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 plug "agkozak/zsh-z"
 plug "hlissner/zsh-autopair"
 plug "koendirkvanesterik/zsh-git"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
+# Initiate substring search and bind required keys
 plug "zsh-users/zsh-history-substring-search"
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
