@@ -8,6 +8,7 @@ autoload -Uz compinit && compinit
 # Set various aliases
 alias vim=nvim
 alias vi=nvim
+alias ls="ls -als"
 
 # Set starship prompt
 eval "$(starship init zsh)"
