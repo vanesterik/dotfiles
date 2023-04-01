@@ -2,7 +2,7 @@
 
 Personal dotfiles
 
-Run command below in order to start:
+Start by running command below:
 
 ```zsh
 > ./setup.sh
