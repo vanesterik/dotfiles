@@ -5,48 +5,70 @@ local map = function(mode, keymap, command)
   })
 end
 
---Remap space as leader key
+-- Remap space as leader key
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Normal Mode --
 -- Better window navigation
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 
--- Vertical movement
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-
--- Resize with arrows
-map("n", "<A-Up>", ":resize +2<CR>")
-map("n", "<A-Down>", ":resize -2<CR>")
-map("n", "<A-Left>", ":vertical resize -2<CR>")
-map("n", "<A-Right>", ":vertical resize +2<CR>")
+-- Resize window using <ctrl> arrow keys
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map(
+  "n",
+  "<C-Left>",
+  "<cmd>vertical resize -2<cr>",
+  { desc = "Decrease window width" }
+)
+map(
+  "n",
+  "<C-Right>",
+  "<cmd>vertical resize +2<cr>",
+  { desc = "Increase window width" }
+)
 
 -- Move lines up and down
-map("n", "<C-p>", ":m-2<CR>==")
-map("n", "<C-n>", ":m+<CR>==")
+map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
--- Delete without overwriting yank register
-map("n", "dd", '"_dd')
+-- Buffers
+map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
--- NvimTree
-map("n", "<leader>fe", ":NvimTreeToggle<CR>")
+-- Windows
+map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
+map("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
+map("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
 
--- Telescope
-map("n", "<leader>ff", ":Telescope find_files<CR>")
-map("n", "<leader>fg", ":Telescope git_files<CR>")
-map("n", "<leader>fr", ":Telescope live_grep<CR>")
+-- Tabs
+map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
--- Visual Mode --
--- Move lines up and down
-map("v", "<C-p>", ":m '<-2<CR>gv")
-map("v", "<C-n>", ":m '>+1<CR>gv=gv")
-
--- Stay in indent mode
+-- Better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+-- New file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+-- Save file
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- Quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })

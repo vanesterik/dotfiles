@@ -1,7 +1,6 @@
-local status, theme = pcall(require, 'tokyonight')
+local status, theme = pcall(require, "tokyonight")
 if not status then
-	return
+  return
 end
 
--- Set colorscheme with Vim cmd
-vim.cmd('colorscheme tokyonight')
+vim.cmd("colorscheme tokyonight")
