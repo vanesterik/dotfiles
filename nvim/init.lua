@@ -1,4 +1,38 @@
+-- Set various options - ie. numbers, tabstop, updatetime, etc.
 require("options")
+
+-- Set various keymaps - ie. buffers, tabs, windows, etc.
 require("keymaps")
-require("plugins")
-require("colortheme")
+
+-- Implement LazyVim as plugin manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Set LazyVim config with plugins folder as import source
+require("lazy").setup({
+	checker = {
+		enabled = true,
+	},
+	defaults = {
+		lazy = false,
+		version = false,
+	},
+	spec = {
+		{
+			import = "plugins",
+		},
+	},
+})
+
+-- Set colorscheme which has been imported as a plugin
+vim.cmd("colorscheme tokyonight")
