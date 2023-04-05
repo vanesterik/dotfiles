@@ -6,6 +6,9 @@ dirname=$(pwd)/$(dirname "$0")
 # Supress initial last login message
 touch ~/.hushlogin
 
+# Symlink .zshrc file
+rm -f ~/.zshrc && ln -s $dirname/zsh/.zshrc ~/.zshrc
+
 # Install zap
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
 
@@ -20,7 +23,5 @@ brew update && brew upgrade && brew bundle --file $dirname/homebrew/Brewfile
 [ ! -d ~/.config ] && mkdir ~/.config
 
 # Symlink to various files and folders
-rm -f ~/.zshrc && ln -s $dirname/zsh/.zshrc ~/.zshrc
-rm -f ~/.config/starship.toml && ln -s $dirname/starship/starship.toml ~/.config/starship.toml
 rm -rf ~/.config/kitty && ln -s $dirname/kitty ~/.config/kitty
 rm -rf ~/.config/nvim && ln -s $dirname/nvim ~/.config/nvim
