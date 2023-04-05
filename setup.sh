@@ -23,5 +23,6 @@ brew update && brew upgrade && brew bundle --file $dirname/homebrew/Brewfile
 [ ! -d ~/.config ] && mkdir ~/.config
 
 # Symlink to various files and folders
+rm -f ~/.config/starship.toml && ln -s $dirname/starship/starship.toml ~/.config/starship.toml
 rm -rf ~/.config/kitty && ln -s $dirname/kitty ~/.config/kitty
 rm -rf ~/.config/nvim && ln -s $dirname/nvim ~/.config/nvim
