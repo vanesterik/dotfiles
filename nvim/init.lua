@@ -34,5 +34,5 @@ require("lazy").setup({
 	},
 })
 
--- Set colorscheme which has been imported as a plugin
-vim.cmd("colorscheme tokyonight")
+-- Set colorscheme of theme which is imported as plugin
+vim.cmd.colorscheme "catppuccin"
