@@ -5,6 +5,10 @@ PATH=$PATH:/opt/homebrew/bin
 autoload -U colors && colors
 autoload -Uz compinit && compinit
 
+# Source various files
+source -- "$HOME/.dotfiles/zsh/functions.zsh"
+source -- "$HOME/.dotfiles/zsh/secrets.zsh"
+
 # Set various aliases
 alias vim=nvim
 alias vi=nvim
