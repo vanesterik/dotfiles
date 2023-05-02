@@ -1,9 +1,8 @@
 #!/bin/bash
 
-if [  ! -n "$OPENAI_API_KEY" ]
-  then
-    echo "ERROR: Please set an environment variable for OPENAI_API_KEY"
-    exit 1
+if [ ! -n "$OPENAI_API_KEY" ]; then
+  echo "ERROR: Please set an environment variable for OPENAI_API_KEY"
+  exit 1
 fi
 
 clean_input=$(printf '%s' "$1" | tr -d '"' | tr -d '\n')
