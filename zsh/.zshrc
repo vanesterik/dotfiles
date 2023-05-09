@@ -6,8 +6,7 @@ autoload -U colors && colors
 autoload -Uz compinit && compinit
 
 # Source various files
-source -- "$HOME/.dotfiles/zsh/functions.zsh"
-source -- "$HOME/.dotfiles/zsh/secrets.zsh"
+source $HOME/.secrets
 
 # Set various aliases
 alias vim=nvim
@@ -25,7 +24,8 @@ eval "$(fnm env --use-on-cd)"
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 plug "agkozak/zsh-z"
 plug "hlissner/zsh-autopair"
-plug "koendirkvanesterik/zsh-git"
+plug "koendirkvanesterik/zsh-git-alias"
+plug "koendirkvanesterik/zsh-openai-prompts"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
