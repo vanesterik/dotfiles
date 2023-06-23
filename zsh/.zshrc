@@ -5,9 +5,6 @@ PATH=$PATH:/opt/homebrew/bin
 autoload -U colors && colors
 autoload -Uz compinit && compinit
 
-# Source various files
-source $HOME/.secrets
-
 # Set various aliases
 alias vim=nvim
 alias vi=nvim
