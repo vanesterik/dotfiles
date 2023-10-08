@@ -22,6 +22,9 @@ stashed = "≡"
 [memory_usage]
 symbol = "memory "
 
+[aws]
+disabled = true
+
 [nodejs]
 disabled = true
 
