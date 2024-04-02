@@ -6,8 +6,6 @@ autoload -U colors && colors
 autoload -Uz compinit && compinit
 
 # Set various aliases
-alias vim=nvim
-alias vi=nvim
 alias ls="ls -als"
 alias cat=bat
 
@@ -22,7 +20,6 @@ eval "$(fnm env --use-on-cd)"
 plug "agkozak/zsh-z"
 plug "hlissner/zsh-autopair"
 plug "vanesterik/zsh-git-alias"
-plug "vanesterik/zsh-openai-prompts"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
