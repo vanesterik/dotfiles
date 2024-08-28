@@ -34,3 +34,6 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=false
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# Settings for Homebrew
+export HOMEBREW_NO_ENV_HINTS=1
