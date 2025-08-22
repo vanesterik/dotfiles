@@ -37,3 +37,13 @@ eval "$(pyenv init -)"
 
 # Settings for Homebrew
 export HOMEBREW_NO_ENV_HINTS=1
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+# Add .zfunc directory to fpath environment variable and initialize zsh completion system
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+# Set zsh menu selection for completion using arrow keys
+zstyle ':completion:*' menu select
