@@ -42,3 +42,6 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 # Set zsh menu selection for completion using arrow keys
 zstyle ':completion:*' menu select
+
+# Set local bin path for user installed binaries
+export PATH="$PATH:/Users/koendirkvanesterik/.local/bin"
