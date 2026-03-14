@@ -12,9 +12,6 @@ alias cat=bat
 # Set starship prompt
 eval "$(starship init zsh)"
 
-# Set fnm environment (node version manager)
-eval "$(fnm env --use-on-cd)"
-
 # Initiate zsh plugins
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 plug "agkozak/zsh-z"
@@ -45,3 +42,6 @@ zstyle ':completion:*' menu select
 
 # Set local bin path for user installed binaries
 export PATH="$PATH:/Users/koendirkvanesterik/.local/bin"
+
+# Set mise-en-place environment manager
+eval "$(mise activate zsh)"
