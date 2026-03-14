@@ -1,0 +1,6 @@
+[tools]
+biome = "latest"
+lefthook = "latest"
+pipx = "latest"
+ruff = "latest"
+uv = "latest"
