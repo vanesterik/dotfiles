@@ -45,3 +45,8 @@ export PATH="$PATH:/Users/koendirkvanesterik/.local/bin"
 
 # Set mise-en-place environment manager
 eval "$(mise activate zsh)"
+
+export PATH=$PATH:/Users/koendirkvanesterik/bin
+
+# The next line updates PATH for Nebius CLI.
+if [ -f '/Users/koendirkvanesterik/.nebius/path.zsh.inc' ]; then source '/Users/koendirkvanesterik/.nebius/path.zsh.inc'; fi

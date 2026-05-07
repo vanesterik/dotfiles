@@ -1,9 +1,9 @@
-# Securely store and access AWS credentials in development environments
-brew "aws-vault"
 # Mozilla CA certificate store
 brew "ca-certificates"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # GitHub command-line tool
@@ -12,6 +12,8 @@ brew "gh"
 brew "git-delta"
 # GNU typing tutor
 brew "gnu-typist"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Fast, distributed, high performance gradient boosting framework
 brew "lightgbm"
 # Polyglot runtime manager (asdf rust clone)
@@ -61,6 +63,8 @@ cask "microsoft-outlook"
 cask "microsoft-teams"
 # VPN client
 cask "mullvad-vpn"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Geographic Information System
 cask "qgis"
 # Control your tools with a few keystrokes
@@ -79,3 +83,8 @@ cask "vlc"
 cask "whatsapp"
 # Collect, organise, cite, and share research sources
 cask "zotero"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "streetsidesoftware.code-spell-checker-dutch"
+vscode "teabyii.ayu"
+vscode "waderyan.gitblame"
