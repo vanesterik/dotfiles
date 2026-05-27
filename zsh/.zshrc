@@ -8,6 +8,9 @@ autoload -Uz compinit && compinit
 # Set various aliases
 alias ls="ls -als"
 alias cat=bat
+alias lock="caffeinate -dimsu & pmset displaysleepnow"
+alias unlock="pkill caffeinate"
+alias activate="source .venv/bin/activate"
 
 # Set starship prompt
 eval "$(starship init zsh)"
@@ -20,6 +23,7 @@ plug "vanesterik/zsh-git-alias"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
+plug "vanesterik/zsh-venv-auto-switch"
 
 # Settings for zsh history substring plugin
 bindkey '^[[A' history-substring-search-up
@@ -50,3 +54,9 @@ export PATH=$PATH:/Users/koendirkvanesterik/bin
 
 # The next line updates PATH for Nebius CLI.
 if [ -f '/Users/koendirkvanesterik/.nebius/path.zsh.inc' ]; then source '/Users/koendirkvanesterik/.nebius/path.zsh.inc'; fi
+
+# Specifc project aliases
+alias start_cpu="nebius compute instance start --id computeinstance-e00m845e2e47qjar4n"
+alias start_gpu="nebius compute instance start --id computeinstance-e00ybgs6dycc8q1nea"
+alias stop_cpu="nebius compute instance stop --id computeinstance-e00m845e2e47qjar4n"
+alias stop_gpu="nebius compute instance stop --id computeinstance-e00ybgs6dycc8q1nea"
