@@ -26,6 +26,7 @@ brew update && brew upgrade && brew bundle --file "$dirname/homebrew/Brewfile"
 rm -f ~/.config/starship.toml && ln -s "$dirname/starship/starship.toml" ~/.config/starship.toml
 rm -rf ~/.config/ghostty && ln -s "$dirname/ghostty" ~/.config/ghostty
 rm -rf ~/.config/mise && ln -s "$dirname/mise" ~/.config/mise
+rm -f ~/.vimrc && ln -s "$dirname/vim/.vimrc" ~/.vimrc
 
 # Set dock to instant autohide
 defaults write com.apple.dock autohide -bool true && defaults write com.apple.dock autohide-delay -float 0 && defaults write com.apple.dock autohide-time-modifier -float 0 && killall Dock
