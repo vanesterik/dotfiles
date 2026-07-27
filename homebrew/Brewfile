@@ -14,8 +14,6 @@ brew "git-delta"
 brew "gnu-typist"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Fast, distributed, high performance gradient boosting framework
-brew "lightgbm"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Swiss-army knife of markup format conversion
@@ -24,10 +22,6 @@ brew "pandoc"
 brew "starship"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Command-line interface for 1Password
-cask "1password-cli"
-# Chromium based browser
-cask "arc"
 # Compact TeX distribution as alternative to the full TeX Live / MacTeX
 cask "basictex"
 # Web browser focusing on privacy
@@ -51,10 +45,6 @@ cask "firefox"
 cask "font-fira-code-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Web browser
-cask "google-chrome"
-# Create custom keyboard shortcuts for anything
-cask "keysmith"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
 # Email client
@@ -86,5 +76,4 @@ cask "zotero"
 vscode "ms-vscode-remote.remote-ssh"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "streetsidesoftware.code-spell-checker-dutch"
-vscode "teabyii.ayu"
 vscode "waderyan.gitblame"
