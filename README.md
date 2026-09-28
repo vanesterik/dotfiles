@@ -2,15 +2,27 @@
 
 My personal dotfiles setup inspired by [@marcelbeumer](https://github.com/marcelbeumer), [@mhogeveen](https://github.com/mhogeveen) and [@tlolkema](https://github.com/tlolkema). Special thanks to you ... brothers in code :heart:
 
-> **⚠️ This dotfiles setup is intended for macOS (OSX) users. Compatibility with other operating systems is not supported.**
+There are two setups here, and they are not the same size.
 
-Start by running command below:
+**macOS** — the full environment: every tool, every application, every font.
 
 ```zsh
 > ./setup.sh
 ```
 
-After running the setup script, the environment will be configured with all registered tools and configurations.
+**Ubuntu** — a server, reached over SSH. The shell, the prompt and an editor,
+and nothing with a window.
+
+```zsh
+> ./setup.sh --ubuntu
+```
+
+Either way, `--dry-run` prints what would happen and changes nothing, and
+running the script again is safe: every step reports what is already there and
+skips it.
+
+After running the setup script, the environment will be configured with all
+registered tools and configurations.
 
 ## Configurations
 
@@ -49,3 +61,40 @@ The following tools are included in this dotfiles setup:
 - [Mise](https://mise.jdx.dev/) - A tool for managing and organizing your development environment.
 
 All tools mentioned above are configured to work seamlessly with Zsh, ensuring a smooth and efficient development experience on your macOS system.
+
+## Ubuntu
+
+Servers get a deliberately smaller subset. Clone the repository and run the
+script:
+
+```zsh
+> git clone https://github.com/vanesterik/dotfiles ~/.dotfiles
+> ~/.dotfiles/setup.sh --ubuntu
+```
+
+It installs `zsh` and `vim` with apt, Starship and Zap from their own
+installers, links `.zshrc`, `.vimrc` and `starship.toml` into place, and makes
+Zsh the login shell. Then log out and back in — the shell it ran from is still
+Bash, and Zap fetches the plugins on the first Zsh start.
+
+**What it deliberately leaves out.** Homebrew, because it would pull half a
+gigabyte and a compiler toolchain to install what apt already has. Mise and its
+runtimes, because a project on a server brings its own — and two version
+managers on one `PATH` is how a machine ends up with two Nodes. Ghostty's
+configuration, because a terminal emulator has nothing to do over SSH.
+
+### One `.zshrc`, two operating systems
+
+There is no second Zsh configuration. `zsh/.zshrc` serves both, using two kinds
+of guard:
+
+- **On the tool**, for anything that depends on a binary being installed —
+  `bat`, Starship, Mise, Zap. The same line is then correct on a laptop with
+  everything and a server with almost nothing.
+- **On the OS**, only for what genuinely differs: Homebrew's prefix,
+  `JAVA_HOME`, the Android SDK, and the `lock`/`unlock` aliases, which call
+  `caffeinate` and `pmset` and exist nowhere else.
+
+Anything added to `.zshrc` that assumes a tool is present should be guarded the
+first way. `alias cat=bat` was not, which breaks `cat` outright on a machine
+without `bat`.
