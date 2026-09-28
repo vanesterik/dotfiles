@@ -77,6 +77,15 @@ installers, links `.zshrc`, `.vimrc` and `starship.toml` into place, and makes
 Zsh the login shell. Then log out and back in — the shell it ran from is still
 Bash, and Zap fetches the plugins on the first Zsh start.
 
+**Terminfo.** Ghostty sets `TERM=xterm-ghostty` and ships that description
+with the application, so a server has never seen it — ncurses falls back to
+something minimal and the escape sequences Zsh emits to move the cursor are
+wrong. It does not announce itself as an error: typing `ls -als` renders as
+`ls--aalls`, because Zsh redraws the line on every keystroke against a cursor
+position the terminal disagrees with. The script installs the description from
+`terminfo/` into `~/.terminfo`, which needs no `sudo`. Run `./update.sh` on the
+Mac to refresh it after a Ghostty upgrade.
+
 **What it deliberately leaves out.** Homebrew, because it would pull half a
 gigabyte and a compiler toolchain to install what apt already has. Mise and its
 runtimes, because a project on a server brings its own — and two version
