@@ -202,6 +202,45 @@ setup_ubuntu() {
         run sudo apt-get install -y zsh vim
     fi
 
+    section "Terminfo"
+    # Ghostty sets TERM=xterm-ghostty, and that description ships with Ghostty
+    # -- on the Mac. A server has never seen it, so ncurses falls back to
+    # something minimal and the escape sequences zsh emits to move the cursor
+    # are wrong. It shows up while typing rather than as an error: `ls -als`
+    # renders as `ls--aalls`, because zsh-syntax-highlighting redraws the whole
+    # line on every keystroke against a cursor position the terminal does not
+    # agree with.
+    #
+    # The description is carried in this repository rather than fetched,
+    # because this half runs on the server, where Ghostty is not installed.
+    # update.sh regenerates it from the Mac's copy, the way it regenerates the
+    # Brewfile.
+    #
+    # ~/.terminfo, which ncurses reads by default, so this needs no sudo. tic
+    # is part of ncurses-bin and is already on a bare Ubuntu image.
+    if [ ! -f "$DOTFILES/terminfo/xterm-ghostty.terminfo" ]; then
+        note "no terminfo/xterm-ghostty.terminfo in this clone; skipped"
+    elif infocmp xterm-ghostty >/dev/null 2>&1; then
+        note "xterm-ghostty already known to this machine"
+    elif [ "$DRY_RUN" = 1 ]; then
+        note "would install xterm-ghostty into ~/.terminfo"
+    else
+        # tic warns that "older tic versions may treat the description field as
+        # an alias", about a line Ghostty wrote and nothing here can act on.
+        # Kept for a real failure, dropped otherwise -- as the starship step
+        # does with its own wall of output.
+        local ticlog
+        ticlog="$(mktemp)"
+        if tic -x -o "$HOME/.terminfo" "$DOTFILES/terminfo/xterm-ghostty.terminfo" >"$ticlog" 2>&1; then
+            note "xterm-ghostty installed into ~/.terminfo"
+        else
+            cat "$ticlog" >&2
+            rm -f "$ticlog"
+            exit 1
+        fi
+        rm -f "$ticlog"
+    fi
+
     section "Starship"
     # From its own installer rather than apt: Ubuntu's archive does not carry
     # it, and the installer resolves the right binary for the architecture.
