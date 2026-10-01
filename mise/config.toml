@@ -1,6 +1,8 @@
 [tools]
+"aqua:go-task/task" = "latest"
 biome = "latest"
+go = "latest"
 lefthook = "latest"
-pipx = "latest"
+node = "24"
 ruff = "latest"
 uv = "latest"
