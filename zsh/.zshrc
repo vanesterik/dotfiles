@@ -49,7 +49,6 @@ if [ -f "$HOME/.local/share/zap/zap.zsh" ]; then
   plug "zsh-users/zsh-syntax-highlighting"
   plug "zsh-users/zsh-history-substring-search"
   plug "vanesterik/zsh-venv-auto-switch"
-  plug "vanesterik/zsh-server-remote"
 fi
 
 # Settings for zsh history substring plugin
@@ -92,16 +91,11 @@ export PATH="$PATH:$HOME/bin"
 #
 #     [[ $? -eq 0 ]] && source "${ZDOTDIR:-$HOME}/.zshrc" || return
 #
-# so a missing .secrets -- which is gitignored, and therefore missing on every
-# fresh machine -- made the installer report failure and took the setup script
-# down with it. `if ... fi` with no else returns 0 when the test fails.
+# so a missing optional file -- which is the normal case on a fresh machine --
+# would make the installer report failure and take the setup script down with
+# it. `if ... fi` with no else returns 0 when the test fails.
 
 # The next line updates PATH for Nebius CLI.
 if [ -f "$HOME/.nebius/path.zsh.inc" ]; then
   source "$HOME/.nebius/path.zsh.inc"
-fi
-
-# Set secret environment variables
-if [ -f "$HOME/.dotfiles/zsh/.secrets" ]; then
-  source "$HOME/.dotfiles/zsh/.secrets"
 fi

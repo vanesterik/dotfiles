@@ -185,15 +185,6 @@ setup_ubuntu() {
           "needed to fetch the starship and zap installers"
     refuse_if_failed
 
-    # Not a failure. Every symlink is computed from this script's own location,
-    # so a clone anywhere works -- except .zshrc's last line, which looks for
-    # secrets at a fixed path because a shell startup file cannot know where the
-    # repository went.
-    if [ "$DOTFILES" != "$HOME/.dotfiles" ]; then
-        note "note    this clone is at $DOTFILES, not ~/.dotfiles"
-        note "        everything works; only zsh/.secrets is looked for at the latter"
-    fi
-
     section "Packages"
     if dpkg -s zsh vim >/dev/null 2>&1; then
         note "zsh and vim already installed"
