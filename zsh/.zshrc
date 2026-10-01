@@ -79,23 +79,6 @@ fi
 #
 # $HOME rather than a spelled-out home directory. These named
 # /Users/koendirkvanesterik, which is not this machine's home, so both entries
-# had been pointing at nothing and the Nebius test could never be true.
+# had been pointing at nothing.
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
-
-# --- Optional files --------------------------------------------------------
-#
-# `if` rather than `[ -f x ] && source x`, and the difference is not style: a
-# trailing `&&` whose test fails makes the whole file return non-zero, and
-# things source this file and check that status. Zap's installer ends with
-#
-#     [[ $? -eq 0 ]] && source "${ZDOTDIR:-$HOME}/.zshrc" || return
-#
-# so a missing optional file -- which is the normal case on a fresh machine --
-# would make the installer report failure and take the setup script down with
-# it. `if ... fi` with no else returns 0 when the test fails.
-
-# The next line updates PATH for Nebius CLI.
-if [ -f "$HOME/.nebius/path.zsh.inc" ]; then
-  source "$HOME/.nebius/path.zsh.inc"
-fi
