@@ -1,6 +1,8 @@
 [tools]
+actionlint = "latest"
 "aqua:go-task/task" = "latest"
 biome = "latest"
+ffmpeg = "latest"
 go = "latest"
 lefthook = "latest"
 node = "24"
