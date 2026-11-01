@@ -101,7 +101,7 @@ of guard:
   `bat`, Starship, Mise, Zap. The same line is then correct on a laptop with
   everything and a server with almost nothing.
 - **On the OS**, only for what genuinely differs: Homebrew's prefix,
-  `JAVA_HOME`, the Android SDK, and the `lock`/`unlock` aliases, which call
+  `JAVA_HOME`, the Android SDK, and the `awake`/`lock` aliases, which call
   `caffeinate` and `pmset` and exist nowhere else.
 
 Anything added to `.zshrc` that assumes a tool is present should be guarded the

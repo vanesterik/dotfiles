@@ -59,12 +59,17 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=false
 
 # --- macOS only ------------------------------------------------------------
 #
-# Homebrew's prefix, the JVM, the Android SDK and the two screen-lock aliases.
+# Homebrew's prefix, the JVM, the Android SDK and the awake/lock aliases.
 # caffeinate and pmset do not exist off macOS, so these are the lines that
 # have to know what they are running on.
 if [[ "$OSTYPE" == darwin* ]]; then
-  alias lock="caffeinate -dimsu & pmset displaysleepnow"
-  alias unlock="pkill caffeinate"
+  # `awake python train.py` keeps the Mac from sleeping until the command
+  # exits, so a long job survives a locked screen and nothing needs undoing.
+  # -s only holds on AC power, and closing the lid sleeps the Mac regardless.
+  alias awake="caffeinate -ims"
+  # Turns the display off. It locks only when Lock Screen requires the
+  # password immediately (sysadminctl -screenLock immediate -password -).
+  alias lock="pmset displaysleepnow"
 
   export HOMEBREW_NO_ENV_HINTS=1
   eval "$(/opt/homebrew/bin/brew shellenv)"
