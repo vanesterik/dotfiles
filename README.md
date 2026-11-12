@@ -59,6 +59,7 @@ The following tools are included in this dotfiles setup:
 - [Starship](https://starship.rs/) - The minimal, blazing-fast, and infinitely customizable prompt for any shell.
 - [Ghostty](https://ghostty.org/) - A terminal emulator that uses platform-native UI and GPU acceleration.
 - [Mise](https://mise.jdx.dev/) - A tool for managing and organizing your development environment.
+- [Hammerspoon](https://www.hammerspoon.org/) - Desktop automation in Lua. `hammerspoon/init.lua` binds ⌃⌥⌘ hotkeys that send the selected text to the Claude desktop app with a preset prompt (translate, check grammar, improve style); ⌃⌥⌘Space opens a picker with every action. Grant Hammerspoon Accessibility permission after the first setup.
 
 All tools mentioned above are configured to work seamlessly with Zsh, ensuring a smooth and efficient development experience on your macOS system.
 

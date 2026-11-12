@@ -151,6 +151,11 @@ setup_macos() {
     link "$DOTFILES/ghostty"                "$HOME/.config/ghostty"
     link "$DOTFILES/mise"                   "$HOME/.config/mise"
 
+    # The file rather than the directory: Hammerspoon installs Spoons into
+    # ~/.hammerspoon/Spoons, and those belong to the machine, not the repository.
+    run mkdir -p "$HOME/.hammerspoon"
+    link "$DOTFILES/hammerspoon/init.lua"   "$HOME/.hammerspoon/init.lua"
+
     install_zap
 
     section "Dock"
